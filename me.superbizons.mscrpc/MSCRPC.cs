@@ -21,23 +21,10 @@ public class MSCRPC
         return this.MSCRPCID;
     }
 
-    private static void initDiscord()
-    {
-        DiscordEventHandlers handlers;
-        memset(&handlers, 0, sizeof(handlers));
-        handlers.ready = handleDiscordReady;
-        handlers.errored = handleDiscordError;
-        handlers.disconnected = handleDiscordDisconnected;
-        handlers.joinGame = handleDiscordJoinGame;
-        handlers.spectateGame = handleDiscordSpectateGame;
-        handlers.joinRequest = handleDiscordJoinRequest;
-        Discord_Initialize(getAppID , &handlers, 1, "1234");
-    }
-
     static void Main(string args[])
     {
         Log("Logging...");
-        initDiscord();
+        MSCConnection().getInstance().initDiscord();
     }
 
     
